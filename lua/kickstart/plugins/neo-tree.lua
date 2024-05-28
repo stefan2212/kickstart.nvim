@@ -12,8 +12,16 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    {
+      '<leader>ge',
+      function()
+        require('neo-tree.command').execute { source = 'git_status', toggle = true }
+      end,
+      desc = 'Git Explorer',
+    },
   },
   opts = {
+    sources = { 'filesystem', 'buffers', 'git_status' },
     filesystem = {
       window = {
         mappings = {
